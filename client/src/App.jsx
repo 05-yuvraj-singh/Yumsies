@@ -5,7 +5,7 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import Feed from './Pages/Feed/Feed';
 
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashrRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (

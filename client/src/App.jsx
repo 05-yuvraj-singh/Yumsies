@@ -5,7 +5,10 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 import Feed from './Pages/Feed/Feed';
 
 
-import { HashrRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import Search from './Pages/Search/Search';
+import PostRecipe from './Pages/PostRecipe/PostRecipe';
+import ProfilePage from './Pages/Profile/ProfilePage';
 
 function App() {
   return (
@@ -17,6 +20,10 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/email-verification" element={<EmailVerification />} />
+
+          <Route path="/search" element={<Search/>}/>
+          <Route path="/post" element={<PostRecipe/>}/>
+          <Route path="/profile" element={<ProfilePage/>}/>
 
         </Routes>
          

@@ -1,9 +1,16 @@
 import React from 'react'
+import Navbar from '../../components/Navbar.jsx'
+import Recipe from '../../components/Recipie.jsx'
 
 function Feed() {
   return (
     <>
-      <h1>FEED</h1>
+    <Navbar/>
+      <Recipe/>
+      <Recipe/>
+      <Recipe/>
+      <Recipe/>
+      <Recipe/>
     </>
   )
 }

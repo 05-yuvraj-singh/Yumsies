@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from '../../components/Navbar.jsx'
+
 import {
   DndContext,
   closestCenter,
@@ -129,6 +131,9 @@ export default function PostRecipe() {
   };
 
   return (
+    <>
+    <Navbar/>
+
     <div className="max-w-2xl mx-auto p-4 sm:p-6 bg-white rounded-xl shadow-lg mt-8 sm:mt-12 mb-16">
       <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-gray-800">
         Share a Recipe
@@ -283,6 +288,7 @@ export default function PostRecipe() {
         </div>
       </form>
     </div>
+    </>
   );
 }
 

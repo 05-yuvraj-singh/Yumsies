@@ -1,25 +1,12 @@
 import React, { useState } from 'react';
 import { FaHeart, FaCommentDots } from 'react-icons/fa';
 
-const imgUrl = "https://images.unsplash.com/photo-1727324735318-c25d437052f7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-
-const recipe = {
-  img: imgUrl,
-  title: "Butter Chicken Masala",
-  description: "Butter Chicken Masala with tasty gravy",
-  ingredients: ["Butter", "Chicken", "Masala"],
-  instructions: ["Take butter", "Put chicken", "Serve it well"],
-  dateOfUpload: "2024-02-18",
-  likes: 120,
-  comments: []
-};
-
-function Recipe() {
+function Recipe({ data }) {
   const [showDescription, setShowDescription] = useState(false);
   const [showIngredients, setShowIngredients] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
   const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(recipe.likes);
+  const [likeCount, setLikeCount] = useState(data.likes?.length || 0);
 
   const handleLikeClick = () => {
     setLikeCount(prev => liked ? prev - 1 : prev + 1);
@@ -30,13 +17,13 @@ function Recipe() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4 sm:px-6 md:px-10">
       <div className="w-full max-w-2xl p-6 sm:p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl sm:text-3xl font-semibold text-center text-gray-900 mb-6">
-          {recipe.title}
+          {data.title}
         </h2>
 
         <img
           className="w-full h-56 sm:h-64 object-cover rounded-md mb-6"
-          src={recipe.img}
-          alt={recipe.title}
+          src={data.imageUrl?.[0] || 'https://via.placeholder.com/600x400.png?text=No+Image'}
+          alt={data.title}
         />
 
         {/* Description */}
@@ -49,7 +36,7 @@ function Recipe() {
             <span className="text-xl">{showDescription ? '-' : '+'}</span>
           </div>
           {showDescription && (
-            <p className="text-gray-700 text-sm sm:text-base mt-2">{recipe.description}</p>
+            <p className="text-gray-700 text-sm sm:text-base mt-2">{data.description}</p>
           )}
         </div>
 
@@ -64,7 +51,7 @@ function Recipe() {
           </div>
           {showIngredients && (
             <ol className="list-decimal ml-6 mt-2 text-sm sm:text-base">
-              {recipe.ingredients.map((ingredient, index) => (
+              {data.ingredients.map((ingredient, index) => (
                 <li key={index} className="text-gray-700">{ingredient}</li>
               ))}
             </ol>
@@ -82,7 +69,7 @@ function Recipe() {
           </div>
           {showInstructions && (
             <ol className="list-decimal ml-6 mt-2 text-sm sm:text-base">
-              {recipe.instructions.map((step, index) => (
+              {data.instructions.map((step, index) => (
                 <li key={index} className="text-gray-700">{step}</li>
               ))}
             </ol>
@@ -101,7 +88,7 @@ function Recipe() {
         </div>
 
         <p className="text-gray-500 text-xs mt-8 text-right">
-          Uploaded on: {recipe.dateOfUpload}
+          Uploaded on: {new Date(data.createdAt).toLocaleDateString()}
         </p>
       </div>
     </div>
